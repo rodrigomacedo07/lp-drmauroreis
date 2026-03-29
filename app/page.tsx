@@ -22,16 +22,27 @@ export default function LPDrmauroReis() {
       {/* CONTEÚDO PRINCIPAL (HERO + CTAs) */}
       <main className="flex-1 flex flex-col items-center justify-center p-6 text-center max-w-2xl mx-auto w-full mt-8 md:mt-16">
         
-        {/* FOTO E IDENTIFICAÇÃO */}
-        <div className="relative mb-6">
-          <div className="absolute inset-0 bg-[#2E86C1] rounded-full blur-md opacity-20 transform scale-110"></div>
-          <Image
-            src="/miniatura_ebook_dr.png"
-            alt="Dr. Mauro Reis"
-            width={160}
-            height={160}
-            className="relative rounded-full border-4 border-white shadow-xl object-cover"
-          />
+{/* FOTO E IDENTIFICAÇÃO - POP-OUT DEFINITIVO COM SOMBRA COMBINADA E ALINHAMENTO PELA BASE */}
+        {/* mt-12 dá espaço em cima para a cabeça vazar sem trombar no conteúdo anterior */}
+        <div className="relative w-40 h-40 mx-auto mt-12 mb-8">
+          
+          {/* 1. O SELO CIRCULAR (FUNDO DO AVATAR) */}
+          {/* CORREÇÃO DO ERRO VSCODE: Juntei a profundidade (rgba 0,0,0) e o glow (rgba 46,134,193) em uma única classe shadow-[...] */}
+          <div className="absolute inset-0 rounded-full bg-white border-4 border-white shadow-[0_25px_50px_-12px_rgba(0,0,0,0.3),0_0_40px_10px_rgba(46,134,193,0.35)] z-0"></div>
+
+          {/* 2. A IMAGEM DO MÉDICO (POP-OUT) */}
+          {/* CORREÇÃO DE ALINHAMENTO: bottom-0 garante que o tronco fique ancorado no fundo do selo. */}
+          <div className="absolute bottom-0 left-0 w-full z-10 flex justify-center">
+            <Image
+              src="/foto_perfil_dr.png" // O arquivo PNG sem fundo recortado
+              alt="Dr. Mauro Reis"
+              width={160} // Largura idêntica ao selo
+              height={210} // Altura MAIOR que o selo para a cabeça sobrar pra cima
+              // rounded-b-full garante que as pontas de baixo da foto acompanhem a curva do selo!
+              className="object-cover rounded-b-full" 
+              style={{ objectPosition: 'bottom' }} // Força o alinhamento da imagem a partir de baixo
+            />
+          </div>
         </div>
 
         <h1 className="text-3xl md:text-4xl font-extrabold mb-3 leading-tight">

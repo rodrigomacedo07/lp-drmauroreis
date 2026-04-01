@@ -1,7 +1,15 @@
+'use client';
+
 import Image from "next/image";
-import { MessageCircle, BookOpen, ChevronRight } from "lucide-react";
+import { MessageCircle, BookOpen, ChevronRight, ChevronDown, X } from "lucide-react";
+import { useState } from "react";
 
 export default function LPDrmauroReis() {
+
+  const [isCapaOpen, setIsCapaOpen] = useState(false); // Estado para abrir/fechar o modal
+
+  const toggleCapa = () => setIsCapaOpen(!isCapaOpen); // Função que inverte o estado
+
   return (
     <div className="min-h-screen bg-[#F8F9FA] text-[#0D2A4B] font-sans flex flex-col">
       
@@ -22,7 +30,7 @@ export default function LPDrmauroReis() {
       {/* CONTEÚDO PRINCIPAL (HERO + CTAs) */}
       <main className="flex-1 flex flex-col items-center justify-center p-6 text-center max-w-2xl mx-auto w-full mt-8 md:mt-16">
         
-{/* FOTO E IDENTIFICAÇÃO - POP-OUT DEFINITIVO COM SOMBRA COMBINADA E ALINHAMENTO PELA BASE */}
+        {/* FOTO E IDENTIFICAÇÃO - POP-OUT DEFINITIVO COM SOMBRA COMBINADA E ALINHAMENTO PELA BASE */}
         {/* mt-12 dá espaço em cima para a cabeça vazar sem trombar no conteúdo anterior */}
         <div className="relative w-40 h-40 mx-auto mt-12 mb-8">
           
@@ -46,46 +54,79 @@ export default function LPDrmauroReis() {
         </div>
 
         <h1 className="text-3xl md:text-4xl font-extrabold mb-3 leading-tight">
-          At vero eos etaccusio amus <span className="text-[#2E86C1]">dignis ducimus.</span>
+          Cuidado especializado de quem <span className="text-[#2E86C1]">entende a sua jornada.</span>
         </h1>
         
-        <p className="text-gray-600 text-base md:text-lg mb-10 leading-relaxed px-4">
-          Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit.
+        <p className="text-gray-600 text-base md:text-lg mb-10 leading-relaxed px-4 max-w-2xl">
+          Sou o Dr. Mauro Reis, médico neurologista infantil e pai atípico. Minha missão é garantir a melhor qualidade de vida para o seu filho, unindo medicina e acolhimento humano.
         </p>
 
         {/* BOTÕES DE AÇÃO (CTAs) */}
-        <div className="w-full flex flex-col gap-4 px-2">
-          {/* Botão Primário: WhatsApp */}
-          <a 
+        <div className="w-full max-w-md flex flex-col gap-4 px-2 mb-16 items-center">    
+          {/* Botão Primário: Consulta */}
+          <a
             href="https://wa.me/5521991687719" 
             target="_blank" 
             rel="noopener noreferrer"
             className="w-full flex items-center justify-between bg-[#2E86C1] hover:bg-[#1B4F72] text-white font-bold py-4 px-6 rounded-xl shadow-md transition-all active:scale-95"
           >
-            <span className="flex items-center gap-3">
-              <MessageCircle className="w-6 h-6" />
-              Agendar Consulta
+            <span className="flex items-center gap-3 text-left">
+              <MessageCircle className="w-6 h-6 shrink-0" />
+              <span>Quero agendar minha consulta</span>
             </span>
-            <ChevronRight className="w-5 h-5 opacity-70" />
+            <ChevronRight className="w-5 h-5 opacity-70 shrink-0" />
           </a>
-
-          {/* Botão Secundário: E-book */}
-          <a 
-            href="https://ebook-congresso.vercel.app/ebook" 
-            target="_blank" 
-            rel="noopener noreferrer"
-            className="w-full flex items-center justify-between bg-white hover:bg-gray-50 text-[#0D2A4B] font-bold py-4 px-6 rounded-xl shadow-sm border border-gray-200 transition-all active:scale-95"
-          >
-            <span className="flex items-center gap-3">
-              <BookOpen className="w-6 h-6 text-[#2E86C1]" />
-              Acessar e-book gratuito
-            </span>
-            <ChevronRight className="w-5 h-5 opacity-40" />
-          </a>
+          <div className="mt-12 text-[#2E86C1]/30 animate-bounce">
+            <ChevronDown className="w-10 h-10" />
+          </div>
         </div>
       </main>
 
-{/* FOOTER INSTITUCIONAL */}
+
+{/* SEÇÃO DO E-BOOK (PRE-FOOTER BANNER) */}
+      {/* CAIXA EXTERNA: Fundo azul 100% da tela */}
+      <div className="w-full bg-[#2E86C1] text-white mt-16 relative overflow-hidden shadow-2xl">
+        
+        {/* Efeito de brilho de fundo para dar charme */}
+        <div className="absolute -top-24 -right-24 w-64 h-64 bg-white rounded-full blur-3xl opacity-10 pointer-events-none"></div>
+
+        {/* CAIXA INTERNA: max-w-4xl mx-auto limita a largura em telas gigantes, igual ao Hero */}
+        <div className="max-w-4xl mx-auto px-6 py-12 md:p-12 flex flex-col-reverse md:flex-row items-center justify-between gap-8 md:gap-12 text-center md:text-left relative z-10">
+          
+          {/* Textos e CTA */}
+          <div className="flex-1 flex flex-col items-center md:items-start w-full">
+            <h2 className="text-2xl md:text-3xl font-bold mb-4">Navegando a Neurodiversidade</h2>
+            <p className="text-white/90 text-sm md:text-base mb-8 leading-relaxed max-w-lg">
+              Um manual prático e acolhedor sobre TEA e TDAH, escrito especialmente para mães e cuidadoras.
+            </p>
+            
+            {/* Botão: w-full no celular, md:w-auto na tela média em diante */}
+            <a 
+              href="https://ebook-congresso.vercel.app/" 
+              className="inline-flex items-center gap-3 bg-white text-[#0D2A4B] hover:bg-gray-100 font-bold py-3 md:py-4 px-6 md:px-8 rounded-xl transition-all active:scale-95 shadow-lg w-full md:w-auto justify-center"
+            >
+              <BookOpen className="w-5 h-5 text-[#2E86C1] shrink-0" />
+              <span>Quero acessar meu e-book gratuito</span>
+            </a>
+          </div>
+
+          {/* Capa do E-book Oficial */}
+          {/* mb-12 no mobile para afastar do texto, zerado no md: em diante */}
+          <div className="shrink-0 flex items-center justify-center mb-6 md:mb-0 cursor-pointer transition-all hover:scale-105" onClick={toggleCapa}>
+            <Image
+              src="/capa_ebook.webp"
+              alt="Capa do E-book Navegando a Neurodiversidade (Clique para ampliar)"
+              width={160}
+              height={220}
+              className="object-contain drop-shadow-2xl transition-transform hover:scale-105 duration-300"
+            />
+          </div>
+          
+        </div>
+      </div>
+
+
+      {/* FOOTER INSTITUCIONAL */}
       <footer className="w-full bg-[#0D2A4B] text-white py-10 mt-16 text-center">
         <div className="max-w-3xl mx-auto px-6 flex flex-col items-center gap-2">
           <p className="font-bold text-xl">Dr. Mauro Reis</p>
@@ -108,6 +149,40 @@ export default function LPDrmauroReis() {
           </p>
         </div>
       </footer>
+
+
+
+
+      {/* ============================================================================== */}
+      {/* COMPONENTE DO LIGHTBOX (MODAL DA CAPA MAXIMIZADA) */}
+      {/* Este componente só aparece quando isCapaOpen é TRUE */}
+      {/* z-100 para garantir que ele fique acima de tudo, inclusive do header sticky */}
+      {isCapaOpen && (
+        <div className="fixed inset-0 z-100 flex items-center justify-center bg-black/80 backdrop-blur-sm p-4 transition-all animate-fadeIn" onClick={toggleCapa}>
+          
+          {/* Botão de Fechar no topo */}
+          <button className="absolute top-6 right-6 text-white/70 hover:text-white transition-colors" onClick={toggleCapa}>
+            <X className="w-8 h-8" />
+          </button>
+
+          {/* Imagem Maximizada (Zoom-in) */}
+          <div className="relative w-full max-w-lg flex flex-col items-center justify-center gap-4 transition-transform animate-zoomInFast" onClick={(e) => e.stopPropagation()}>
+            <Image
+              src="/capa_ebook.webp"
+              alt="Capa do E-book Maximizada"
+              width={400} // Aumentado para zoom
+              height={550}
+              className="object-contain drop-shadow-[0_0_35px_rgba(255,255,255,0.15)] rounded-lg"
+            />
+            {/* Texto de apoio menor */}
+            <span className="text-white/70 text-sm font-light mt-2">Clique fora para fechar</span>
+          </div>
+        </div>
+      )}
+      {/* ============================================================================== */}
+
+
+
 
     </div>
   );

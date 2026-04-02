@@ -4,6 +4,12 @@ import Image from "next/image";
 import { MessageCircle, BookOpen, ChevronRight, ChevronDown, X, Video } from "lucide-react";
 import { useState } from "react";
 
+const trackEvent = (name: string, params?: Record<string, any>) => {
+  if (typeof window !== "undefined" && window.gtag) {
+    window.gtag('event', name, params);
+  }
+};
+
 export default function LPDrmauroReis() {
 
   const [isCapaOpen, setIsCapaOpen] = useState(false); // Estado para abrir/fechar o modal
@@ -47,10 +53,16 @@ export default function LPDrmauroReis() {
         <div className="w-full max-w-md flex flex-col gap-4 px-2 mb-16 items-center">    
           {/* Botão Primário: Consulta */}
           <a
-            href="https://wa.me/5521991687719?text=Olá!%20Gostaria%20de%20agendar%20uma%20consulta%20presencial%20com%20o%20Dr.%20Mauro%20Reis." 
+            href="https://wa.me/5521991687719?text=Olá!%20Gostaria%20de%20agendar%20uma%20consulta%20presencial%20com%20o%20Dr.%20Mauro%20Reis.%20(Origem:%20LP-Hero-Presencial)" 
             target="_blank" 
             rel="noopener noreferrer"
             className="w-full flex items-center justify-between bg-[#2E86C1] hover:bg-[#1B4F72] text-white font-bold py-4 px-6 rounded-xl shadow-md transition-all active:scale-95"
+            onClick={() =>
+              trackEvent('click_cta_whatsapp_presencial', {
+                event_category: 'conversion',
+                event_label: 'hero_cta_presencial'
+              })
+            }
           >
             <span className="flex items-center gap-3 text-left">
               <MessageCircle className="w-6 h-6 shrink-0" />
@@ -61,10 +73,16 @@ export default function LPDrmauroReis() {
 
           {/* Botão Secundário: Teleconsulta (Ghost Button) */}
           <a
-            href="https://wa.me/5521991687719?text=Olá!%20Gostaria%20de%20agendar%20uma%20teleconsulta%20com%20o%20Dr.%20Mauro%20Reis." 
+            href="https://wa.me/5521991687719?text=Olá!%20Gostaria%20de%20agendar%20uma%20teleconsulta%20com%20o%20Dr.%20Mauro%20Reis.%20(Origem:%20LP-Hero-Teleconsulta)" 
             target="_blank" 
             rel="noopener noreferrer"
             className="w-full flex items-center justify-between bg-[#f8f9fa] hover:bg-gray-400 text-[#2E86C1] border border-[#2E86C1] font-bold py-3.5 px-6 rounded-xl shadow-md transition-all active:scale-95"
+            onClick={() =>
+                trackEvent('click_cta_whatsapp_teleconsulta', {
+                  event_category: 'conversion',
+                  event_label: 'hero_cta_teleconsulta'
+              })
+            }
           >
             <span className="flex items-center gap-3 text-left">
               <Video className="w-6 h-6 shrink-0" />
@@ -101,6 +119,12 @@ export default function LPDrmauroReis() {
             <a 
               href="https://ebook-congresso.vercel.app/" 
               className="text-left inline-flex items-center gap-3 bg-white text-[#0D2A4B] hover:bg-gray-100 font-bold py-3 md:py-4 px-6 md:px-8 rounded-xl transition-all active:scale-95 shadow-lg w-full md:w-auto justify-center"
+              onClick={() => 
+                  trackEvent('click_cta_ebook', {
+                    event_category: 'engagement',
+                    event_label: 'ebook_cta'
+                  })
+                }
             >
               <BookOpen className="w-6 h-6 text-[#2E86C1] shrink-0" />
               <span>Quero acessar meu e-book gratuito</span>

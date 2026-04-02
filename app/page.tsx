@@ -53,7 +53,7 @@ export default function LPDrmauroReis() {
         <div className="w-full max-w-md flex flex-col gap-4 px-2 mb-16 items-center">    
           {/* Botão Primário: Consulta */}
           <a
-            href="https://wa.me/5521991687719?text=Olá!%20Gostaria%20de%20agendar%20uma%20consulta%20presencial%20com%20o%20Dr.%20Mauro%20Reis.%20(Origem:%20LP-Hero-Presencial)" 
+            href="https://wa.me/5521991687719?text=Olá!%20Gostaria%20de%20agendar%20uma%20consulta%20presencial%20com%20o%20Dr.%20Mauro%20Reis." 
             target="_blank" 
             rel="noopener noreferrer"
             className="w-full flex items-center justify-between bg-[#2E86C1] hover:bg-[#1B4F72] text-white font-bold py-4 px-6 rounded-xl shadow-md transition-all active:scale-95"
@@ -68,7 +68,7 @@ export default function LPDrmauroReis() {
 
               setTimeout(() => {
                 window.open(
-                  "https://wa.me/5521991687719?text=Olá!%20Gostaria%20de%20agendar%20uma%20consulta%20presencial%20com%20o%20Dr.%20Mauro%20Reis.%20(Origem:%20LP-Hero-Presencial)",
+                  "https://wa.me/5521991687719?text=Olá!%20Gostaria%20de%20agendar%20uma%20consulta%20presencial%20com%20o%20Dr.%20Mauro%20Reis.",
                   "_blank"
                 );
               }, 120);
@@ -83,7 +83,7 @@ export default function LPDrmauroReis() {
 
           {/* Botão Secundário: Teleconsulta (Ghost Button) */}
           <a
-            href="https://wa.me/5521991687719?text=Olá!%20Gostaria%20de%20agendar%20uma%20teleconsulta%20com%20o%20Dr.%20Mauro%20Reis.%20(Origem:%20LP-Hero-Teleconsulta)" 
+            href="https://wa.me/5521991687719?text=Olá!%20Gostaria%20de%20agendar%20uma%20teleconsulta%20com%20o%20Dr.%20Mauro%20Reis." 
             target="_blank" 
             rel="noopener noreferrer"
             className="w-full flex items-center justify-between bg-[#f8f9fa] hover:bg-gray-400 text-[#2E86C1] border border-[#2E86C1] font-bold py-3.5 px-6 rounded-xl shadow-md transition-all active:scale-95"
@@ -98,7 +98,7 @@ export default function LPDrmauroReis() {
 
               setTimeout(() => {
                 window.open(
-                  "https://wa.me/5521991687719?text=Olá!%20Gostaria%20de%20agendar%20uma%20teleconsulta%20com%20o%20Dr.%20Mauro%20Reis.%20(Origem:%20LP-Hero-Teleconsulta)",
+                  "https://wa.me/5521991687719?text=Olá!%20Gostaria%20de%20agendar%20uma%20teleconsulta%20com%20o%20Dr.%20Mauro%20Reis.",
                   "_blank"
                 );
               }, 120);

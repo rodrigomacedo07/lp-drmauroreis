@@ -14,6 +14,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://lp-drmauroreis.vercel.app"),
   title: "Dr. Mauro Reis | TEA e TDAH",
   description:
     "Consulta especializada para crianças com TEA e TDAH. Atendimento humanizado com foco em qualidade de vida para seu filho. Agende presencial ou teleconsulta.",
@@ -31,13 +32,14 @@ export const metadata: Metadata = {
     title: "Dr. Mauro Reis | TEA e TDAH",
     description:
       "Cuidado especializado e acolhedor para crianças com TEA e TDAH. Agende sua consulta.",
-    url: "https://lp-drmauroreis.vercel.app",
+
     siteName: "Dr. Mauro Reis",
     images: [
       {
-        url: "/foto_perfil_dr.png",
+        url: "/og-image.png?v=2",
         width: 1200,
         height: 630,
+        alt: "Dr. Mauro Reis - Especialista em TEA e TDAH",
       },
     ],
     locale: "pt_BR",
@@ -49,7 +51,7 @@ export const metadata: Metadata = {
     title: "Dr. Mauro Reis | TEA e TDAH",
     description:
       "Atendimento especializado para crianças com TEA e TDAH. Agende sua consulta.",
-    images: ["/foto_perfil_dr.png"],
+    images: ["/og-image.png?v=2"],
   },
 };
 

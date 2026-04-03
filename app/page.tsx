@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import { MessageCircle, BookOpen, ChevronRight, ChevronDown, X, Video } from "lucide-react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 const trackEvent = (name: string, params?: Record<string, any>) => {
   if (typeof window !== "undefined") {
@@ -16,14 +16,37 @@ export default function LPDrmauroReis() {
 
   const toggleCapa = () => setIsCapaOpen(!isCapaOpen); // Função que inverte o estado
 
+  const [showFloatingEbook, setShowFloatingEbook] = useState(true);
+
+  useEffect(() => {
+  const handleScroll = () => {
+    const section = document.getElementById('ebook');
+
+    if (!section) return;
+
+    const rect = section.getBoundingClientRect();
+
+    // Quando o topo do ebook entra na tela
+    if (rect.top < window.innerHeight * 0.3) {
+      setShowFloatingEbook(false);
+    } else {
+      setShowFloatingEbook(true);
+    }
+  };
+
+  window.addEventListener('scroll', handleScroll);
+
+  return () => window.removeEventListener('scroll', handleScroll);
+}, []);
+
   return (
     <div className="min-h-screen bg-[#F8F9FA] text-[#0D2A4B] font-sans flex flex-col">
       
       {/* CONTEÚDO PRINCIPAL (HERO + CTAs) */}
-      <main className="flex-1 flex flex-col items-center justify-center p-6 text-center max-w-2xl mx-auto w-full mt-8 md:mt-16">
+      <main className="flex-1 flex flex-col items-center justify-center p-6 text-center max-w-2xl mx-auto w-full md:mt-16">
         
         {/* FOTO E IDENTIFICAÇÃO - POP-OUT DEFINITIVO COM SOMBRA COMBINADA E ALINHAMENTO PELA BASE */}
-        <div className="relative w-40 h-40 mx-auto mt-12 mb-8">
+        <div className="relative w-40 h-40 mx-auto mt-8 mb-8">
           
           {/* 1. O SELO CIRCULAR (FUNDO DO AVATAR) */}
           <div className="absolute inset-0 rounded-full bg-white border-4 border-white shadow-[0_25px_50px_-12px_rgba(0,0,0,0.3),0_0_40px_10px_rgba(46,134,193,0.35)] z-0"></div>
@@ -36,7 +59,7 @@ export default function LPDrmauroReis() {
               width={160} // Largura idêntica ao selo
               height={210} // Altura MAIOR que o selo para a cabeça sobrar pra cima
               className="object-cover rounded-b-full" 
-              style={{ objectPosition: 'bottom' }} // Força o alinhamento da imagem a partir de baixo
+              style={{ objectPosition: 'bottom', width: 'auto', height: 'auto' }}// Força o alinhamento da imagem a partir de baixo
             />
           </div>
         </div>
@@ -118,9 +141,9 @@ export default function LPDrmauroReis() {
       </main>
 
 
-{/* SEÇÃO DO E-BOOK (PRE-FOOTER BANNER) */}
+      {/* SEÇÃO DO E-BOOK (PRE-FOOTER BANNER) */}
       {/* CAIXA EXTERNA: Fundo azul 100% da tela */}
-      <div className="w-full bg-[#2E86C1] text-white mt-16 relative overflow-hidden shadow-2xl">
+      <div id="ebook" className="w-full bg-[#2E86C1] text-white mt-16 relative overflow-hidden shadow-2xl">
         
         {/* Efeito de brilho de fundo para dar charme */}
         <div className="absolute -top-24 -right-24 w-64 h-64 bg-white rounded-full blur-3xl opacity-10 pointer-events-none"></div>
@@ -166,6 +189,7 @@ export default function LPDrmauroReis() {
               width={160}
               height={220}
               className="object-contain drop-shadow-2xl transition-transform hover:scale-105 duration-300"
+              style={{ objectPosition: 'bottom', width: 'auto', height: 'auto' }}
             />
           </div>
           
@@ -228,7 +252,40 @@ export default function LPDrmauroReis() {
       )}
       {/* ============================================================================== */}
 
+      {showFloatingEbook && (
+        <div className="fixed bottom-6 right-4 z-50">
+          
+          {/* Botão principal */}
+          <button
+            onClick={() => {
+              trackEvent('click_cta_floating_ebook', {
+                event_category: 'engagement',
+                event_label: 'floating_ebook'
+              });
+            const section = document.getElementById('ebook');
 
+            if (section) {
+              section.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
+
+            setTimeout(() => {
+              setShowFloatingEbook(false);
+            }, 300);
+            }}
+            className="bg-[#BFA929] text-[#f1f5f9] px-4 py-3 rounded-full shadow-[0_05px_10px_rgba(0,0,0,0.4)] flex items-center gap-2 hover:bg-[#f1f5f9] transition"          >
+            E-book gratuito
+          </button>
+
+          {/* Botão de fechar */}
+          <button
+            onClick={() => setShowFloatingEbook(false)}
+            className="absolute -top-2 -left-2 bg-white text-[#2E86C1] rounded-full w-5 h-5 text-xs shadow"
+          >
+            ×
+          </button>
+
+        </div>
+     )}
 
 
     </div>

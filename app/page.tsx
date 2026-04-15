@@ -160,7 +160,7 @@ export default function LPDrmauroReis() {
             
             {/* Botão: w-full no celular, md:w-auto na tela média em diante */}
             <a 
-              href="https://ebook-congresso.vercel.app/" 
+              href="https://ebook-congresso.vercel.app/?utm_source=lp_dr_mauro_reis&utm_medium=referral&utm_campaign=lead_ebook_neuro&utm_content=cta_middle" 
               className="text-left inline-flex items-center gap-3 bg-white text-[#0D2A4B] hover:bg-gray-100 font-bold py-3 md:py-4 px-6 md:px-8 rounded-xl transition-all active:scale-95 shadow-lg w-full md:w-auto justify-center"
               onClick={(e) => {
                 e.preventDefault();
@@ -171,7 +171,7 @@ export default function LPDrmauroReis() {
                 });
 
                 setTimeout(() => {
-                  window.open("https://ebook-congresso.vercel.app/", "_blank");
+                  window.open("https://ebook-congresso.vercel.app/?utm_source=lp_dr_mauro_reis&utm_medium=referral&utm_campaign=lead_ebook_neuro&utm_content=cta_middle", "_blank");
                 }, 120);
               }}
             >

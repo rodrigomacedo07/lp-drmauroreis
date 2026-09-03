@@ -14,7 +14,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://lp-drmauroreis.vercel.app"),
+  metadataBase: new URL("https://www.drmauroreis.com.br"),
   title: "Dr. Mauro Reis | TEA e TDAH",
   description:
     "Consulta especializada para crianças com TEA e TDAH. Atendimento humanizado com foco em qualidade de vida para seu filho. Agende presencial ou teleconsulta.",
